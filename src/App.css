@@ -33,18 +33,18 @@
   color: rgb(64, 55, 55);
   margin-top: 1em;
   margin-left: 3em;
-  margin-right: 3em;
-  padding: 17px 5px;
+  margin-right: 6em;
+  padding: 10px 2px;
   border-radius: 5px;
-  background-image: linear-gradient(rgb(213, 202, 240), rgb(255, 255, 255));
+  background-image: linear-gradient(rgb(209, 207, 215), rgb(211, 249, 185));
 }
 .right-side {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 25vh;
-  background-image: linear-gradient(rgb(147, 108, 185), rgb(185, 136, 222));
-  box-shadow: 0px 0px 12px 2px rgba(3, 10, 10, 0.666)  !important;
+  background-image: linear-gradient(rgb(254, 254, 254), rgba(187, 205, 200, 0.83));
+  box-shadow: 0px 0px 12px 2px rgba(109, 146, 247, 0.666)  !important;
   width: 50%;
   position: relative;
   right: -10em;

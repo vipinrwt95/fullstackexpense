@@ -1,6 +1,6 @@
 import axios from "axios";
 import React,{useRef} from "react";
-const baseUrl="http://localhost:3001/message"
+const baseUrl="http://localhost:3001"
 
 export const Signup=(props)=>{
 const name=useRef();
@@ -15,7 +15,12 @@ const signupHandler=(event)=>{
     email:email.current.value,
     password:password.current.value
 }
-axios.post(`${baseUrl}`,details)
+axios.post(`${baseUrl}/signup`,details)
+.then((res)=>{if(res.data=='Validation error'){
+    alert('User already exists');
+}})
+
+
 }
 
 return(
