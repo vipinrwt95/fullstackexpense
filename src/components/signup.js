@@ -22,6 +22,9 @@ axios.post(`${baseUrl}/signup`,details)
 
 
 }
+const navHandler=()=>{
+    props.page(props.item);
+    }
 
 return(
     <>
@@ -30,6 +33,7 @@ return(
      <input className="text" type="email" placeholder="Email" ref={email} required/>
      <input className="text"type="password" placeholder="Password" ref={password} required />
      <button className="btn" type="submit">Register</button>
+     <nav style={{fontWeight:'25',color:'white'}} onClick={navHandler}>Already have an account</nav>
      </form>
 </>
 )
