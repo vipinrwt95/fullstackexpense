@@ -7,7 +7,7 @@ let Register=()=>{
 
 const [page,setPage]=useState(0);
 const pagehandler=(item)=>{
-    console.log(item)
+   
    setPage(item)
 }
 
