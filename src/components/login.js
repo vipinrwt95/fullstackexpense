@@ -15,9 +15,7 @@ const password=useRef();
     password:password.current.value
 }
 axios.post(`${baseUrl}/login`,details)
-.then((res)=>{if(res.data=='Validation error'){
-    alert('Wrong details');
-}})
+.then((res)=>{alert(res.data.message)})
   }
 
 const navHandler=()=>{

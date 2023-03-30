@@ -16,9 +16,9 @@ const signupHandler=(event)=>{
     password:password.current.value
 }
 axios.post(`${baseUrl}/signup`,details)
-.then((res)=>{if(res.data=='Validation error'){
-    alert('User already exists');
-}})
+.then((res)=>{
+    console.log(res.data.message);
+})
 
 
 }
