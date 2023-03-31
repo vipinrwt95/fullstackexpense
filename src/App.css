@@ -16,25 +16,36 @@
 }
 
 .btn {
-  display: flex;
+  
   justify-content: center;
   font-size: 21px;
   padding: 5px 20px;
   border: 0;
-  background-image: linear-gradient(rgb(177, 158, 237), rgb(154, 76, 214));
-  color: #fff;
+  background-image: linear-gradient(rgb(224, 222, 232), rgb(159, 34, 255));
+  color: rgb(246, 246, 245);
   border-radius: 3px;
   cursor: pointer;
-  margin-top: 5em;
+  margin-top: 1em;
+ }
+ .btndel {
+  
+  justify-content: center;
+  font-size: 12px;
+  padding: 1px;
+  border: 0;
+  background-image: linear-gradient(rgb(202, 238, 228), rgb(35, 146, 139));
+  color: rgb(92, 27, 157);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1em;
  }
  .text {
   font-size: 20px;
   font-weight: 200;
   color: rgb(64, 55, 55);
-  margin-top: 1em;
-  margin-left: 3em;
-  margin-right: 6em;
-  padding: 10px 2px;
+  
+  
+  padding: 2px 2px;
   border-radius: 5px;
   background-image: linear-gradient(rgb(209, 207, 215), rgb(211, 249, 185));
 }
@@ -64,8 +75,27 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font:'Arial Narrow';
   height: 100vh;
+  width:60vh;
+  background-image: linear-gradient(rgb(80, 163, 178), rgb(225, 241, 227));
+  color: rgb(229, 241, 241);
+  cursor: pointer;
+  position: relative;
+  border-radius: 10%;
+  opacity: 0.5;
+
+  }
+  .brand:hover{
+    opacity:1;
+    background-image: linear-gradient(rgb(207, 205, 211), rgb(120, 174, 222));
+    color:rgb(138, 112, 163)
+  }
+  .expense {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font:'Arial Narrow';
+  height: 100vh;
   width:50vh;
-  background-image: linear-gradient(rgb(88, 31, 231), rgb(105, 55, 101));
+  background-image: linear-gradient(rgb(195, 179, 235), rgb(149, 49, 199));
   color: rgb(229, 241, 241);
   cursor: pointer;
   position: relative;
@@ -95,5 +125,24 @@
   cursor: pointer; 
 }
 
-
+img {
+  width: 50px;
+  height: 50px;
+}
+ul{
+  color:antiquewhite;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font:'Arial Narrow';
+  font-weight: 400;
+   font-size: xx-large;
+   list-style-type: none;
+  
+}
+li{
+  color:antiquewhite;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font:'Franklin Gothic Medium';
+  font-weight: 400;
+   font-size: large;
+}
 
