@@ -1,148 +1,65 @@
-.login {
+
+.app{
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100%;
+min-width: 100%;
+height: 100vh;
+width: 100vh;
+background: linear-gradient(rgb(182, 218, 186), rgb(115, 173, 196));
+
+
+}
+.register{
+ font-size: larger;
+
+}
+.btn{
+ color:rgb(19, 63, 19);
+ background: linear-gradient(rgb(156, 122, 191), rgb(244, 241, 245));
+ font-size: large;
+ width: 5em;
+ height: 2em;
+ border-radius: 10px;
+
+}
+.brand{ display: flex;
+  justify-content: center;
+  position: fixed;
+color:rgb(140, 90, 181);
+top: 50px;
+  border: 3px solid rgb(4, 34, 73);
+  border-radius: 60px;
+  border-color: azure;
+  
+}
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+#animate-area {
+  display: flex;
+  justify-content: center;
+   align-items: center;
+    height: 100vh;
+    background: linear-gradient(rgb(130, 217, 207), rgb(197, 228, 59));
+ opacity: 0.76;
+  background-position: 0px 0px;
+  background-repeat: repeat-x repeat-y;
+  animation: animatedBackground 50s linear infinite alternate;
+  background-size: contain;
   width: 100%;
-  height: 100%;
-  background-color: rgb(217, 242, 242);
-  align-items: center;
+  height: 100vh;
+
+}
+.expenselist{
   position: absolute;
-  
-}
-.container {
-  display: flex;
-  background-image: linear-gradient(rgb(80, 163, 178), rgb(225, 241, 227));
- 
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.btn {
-  
-  justify-content: center;
-  font-size: 21px;
-  padding: 5px 20px;
-  border: 0;
-  background-image: linear-gradient(rgb(224, 222, 232), rgb(159, 34, 255));
-  color: rgb(246, 246, 245);
-  border-radius: 3px;
-  cursor: pointer;
-  margin-top: 1em;
- }
- .btndel {
-  
-  justify-content: center;
-  font-size: 12px;
-  padding: 1px;
-  border: 0;
-  background-image: linear-gradient(rgb(202, 238, 228), rgb(35, 146, 139));
-  color: rgb(92, 27, 157);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1em;
- }
- .text {
-  font-size: 20px;
-  font-weight: 200;
-  color: rgb(64, 55, 55);
-  
-  
-  padding: 2px 2px;
-  border-radius: 5px;
-  background-image: linear-gradient(rgb(209, 207, 215), rgb(211, 249, 185));
-}
-.right-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 25vh;
-  background-image: linear-gradient(rgb(254, 254, 254), rgba(187, 205, 200, 0.83));
-  box-shadow: 0px 0px 12px 2px rgba(109, 146, 247, 0.666)  !important;
-  width: 50%;
-  position: relative;
-  right: -10em;
-  margin-top: 5em;
-  top:5em;
-  
-  border-radius: 6px;
-  z-index: 1;
-  transition: all 400ms ease-in-out;
-  cursor: pointer;
-  box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
-}
-  
-
-.brand {
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Arial Narrow';
-  height: 100vh;
-  width:60vh;
-  background-image: linear-gradient(rgb(80, 163, 178), rgb(225, 241, 227));
-  color: rgb(229, 241, 241);
-  cursor: pointer;
-  position: relative;
-  border-radius: 10%;
-  opacity: 0.5;
-
-  }
-  .brand:hover{
-    opacity:1;
-    background-image: linear-gradient(rgb(207, 205, 211), rgb(120, 174, 222));
-    color:rgb(138, 112, 163)
-  }
-  .expense {
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Arial Narrow';
-  height: 100vh;
-  width:50vh;
-  background-image: linear-gradient(rgb(195, 179, 235), rgb(149, 49, 199));
-  color: rgb(229, 241, 241);
-  cursor: pointer;
-  position: relative;
-  border-radius: 10%;
-  
-  
- }
- .hometext {
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Arial Narrow';
-  color: rgb(243, 254, 243);
-  position:absolute;
-  right: 40% !important;
-
-  cursor: pointer; 
-}
-.hometext2 {
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Arial Narrow';
-  color: rgb(243, 254, 243);
-  position:absolute;
-  right: 40% !important;
-  bottom: 50px;
-
-  cursor: pointer; 
-}
-
-img {
-  width: 50px;
-  height: 50px;
-}
-ul{
-  color:antiquewhite;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Arial Narrow';
-  font-weight: 400;
-   font-size: xx-large;
-   list-style-type: none;
-  
-}
-li{
-  color:antiquewhite;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font:'Franklin Gothic Medium';
-  font-weight: 400;
-   font-size: large;
+  top:0;
+  left:0;
 }
 

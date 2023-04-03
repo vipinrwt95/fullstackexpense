@@ -28,10 +28,10 @@ const navHandler=()=>{
 
 return(
     <>
-   <form className="right-side" onSubmit={signupHandler}>
-     <input  className="text"type="text" placeholder="Name"  ref={name}  required/>
-     <input className="text" type="email" placeholder="Email" ref={email} required/>
-     <input className="text"type="password" placeholder="Password" ref={password} required />
+   <form  onSubmit={signupHandler}>
+     <input  className="text"type="text" placeholder="Name"  ref={name}  required/><br/>
+     <input className="text" type="email" placeholder="Email" ref={email} required/><br/>
+     <input className="text"type="password" placeholder="Password" ref={password} required /><br/>
      <button className="btn" type="submit">Register</button>
      <nav style={{fontWeight:'25',color:'white'}} onClick={navHandler}>Already have an account</nav>
      </form>
