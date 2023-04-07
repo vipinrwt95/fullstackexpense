@@ -14,7 +14,7 @@ background: linear-gradient(rgb(182, 218, 186), rgb(115, 173, 196));
 .prembutton{
 
 position: absolute;
-right: 0;
+right: 50;
 top:0;
 width: 5rem;
 height: 3rem;

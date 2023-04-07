@@ -4,10 +4,26 @@ import expensepic from "./expense.png"
 import descpic from "./description.png"
 import categorypic from "./category.png"
 import useRazorpay from "react-razorpay";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store";
+import { useNavigate } from "react-router-dom";
 
 const baseUrl="http://localhost:3001"
+function parseJwt (token) {
+   var base64Url = token.split('.')[1];
+   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+   }).join(''));
+ 
+   return JSON.parse(jsonPayload);
+ }
 
 const Expense=()=>{
+   
+   const navigate=useNavigate()
+   const dispatch=useDispatch();
+  const token=useSelector(state=>state.auth.tokenid);
    const Razorpay=useRazorpay();
    const expense=useRef();
    const description=useRef();
@@ -15,6 +31,9 @@ const Expense=()=>{
    const [currentExpense,setExpense]=useState(null);
    const [allExpenses,setallExpenses]=useState(null)
    let content;
+   const [premium,setPremium]=useState(false);
+   const [showboard,setBoard]=useState(false);
+   const [boardlist,setList]=useState(null);
    
 
 const ExpenseHandler=(event)=>{
@@ -22,7 +41,7 @@ const ExpenseHandler=(event)=>{
  let e=expense.current.value;
  let d=description.current.value;
  let c=category.current.value;
- const token=localStorage.getItem('token')
+ let token=localStorage.getItem('token');
  axios.post(`${baseUrl}/addExpense`,{expense:e,description:d,category:c},{headers:{"Authorization":token}})
  .then(res=>{
     console.log(res.data);
@@ -37,11 +56,20 @@ const addtoDom=(item)=>{
   document.getElementById('list').appendChild(child);
 }
 useEffect(() => {
+
    const token=localStorage.getItem('token')
+   let payload= parseJwt(token);
+    console.log("payload:- ", payload);
+    if(payload.isPremium==true)
+    {
+      setPremium(true)
+    }
+    
+   
     axios.get(`${baseUrl}/Expenses`,{headers:{"Authorization":token}}).then(res=>{
         setallExpenses(res.data)
       })
-   },[currentExpense]);
+   },[currentExpense,premium]);
 
 
 if(allExpenses)
@@ -49,7 +77,7 @@ if(allExpenses)
   content=<ul>{allExpenses.map(item=>{return <li key={item.id}>{item.expense} {item.description} {item.category} <button className="btndel" onClick={expenseDeleteHandler.bind(null,item.id)}>DELETE</button></li>})}</ul> 
 }
 async function expenseDeleteHandler(id){
-   const token=localStorage.getItem('token')
+   let token=localStorage.getItem('token');
     await axios.post(`${baseUrl}/Expenses/Delete`,{id:id},{headers:{"Authorization":token}})
     .then(res=>{
        alert(res.data.message);
@@ -61,15 +89,16 @@ async function expenseDeleteHandler(id){
 }
 const premiumHandler=async(e)=>{
    e.preventDefault();
-const token=localStorage.getItem('token');
+let token=localStorage.getItem('token');
 const response=await axios.get(`${baseUrl}/purchase/premium`,{headers:{'Authorization':token}})
 var options={
    "key":response.data.key_id,
    "order_id":response.data.order.id,
    "handler":async function(response){
      
-  await axios.post(`${baseUrl}/purchase/updatetransactions`,{status:true,order_id:options.order_id,payment_id:response.razorpay_payment_id},{headers:{'Authorization':token}})
-         alert('You are a Premium User Now')
+   const res=await axios.post(`${baseUrl}/purchase/updatetransactions`,{status:true,order_id:options.order_id,payment_id:response.razorpay_payment_id},{headers:{'Authorization':token}})
+        console.log(res.data.token);
+        localStorage.setItem('token',res.data.token);
       
    },
 };
@@ -77,16 +106,22 @@ const rzp1=new Razorpay(options);
 rzp1.on('payment.failed',async function(error){
    console.log(error)
    await axios.post(`${baseUrl}/purchase/updatetransactions`,{status:false,order_id:options.order_id},{headers:{'Authorization':token}})
-   alert('Payment failed'); 
-  
 })
 rzp1.open()
- 
+setPremium(true);
+}
+const leaderBoardHandler=()=>{
+
+ axios.get(`${baseUrl}/leaderboard`).then(res=>{
+   console.log(res.data);
+ })
+
 
 }
 return (
     <>
-     <div><button className="prembutton" onClick={premiumHandler} style={{backgroundColor:'yellow',color:'black'}}>Premium</button></div>    
+     {!premium && <div><button className="prembutton" onClick={premiumHandler} style={{backgroundColor:'yellow',borderRadius:'10px',color:'black'}}>Premium</button></div>}
+     {premium && <div className="prembutton"><button style={{backgroundColor:'yellow',borderRadius:'10px',color:'black'}}>You are Premium User</button></div>}     
   <div className="expenselist"><h1>All Expenses...</h1>
             {content}
             </div>
@@ -108,6 +143,11 @@ return (
             <div><h1>Current Expense Added</h1>
             {currentExpense && <li>{currentExpense.expense} paid for {currentExpense.description} - {currentExpense.category}</li>}
             </div>
+            <div>{
+                   premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist}</div> 
+                 }  </div>
+            
+            
         </div>
    </div>
    
