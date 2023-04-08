@@ -45,7 +45,7 @@ const ExpenseHandler=(event)=>{
  axios.post(`${baseUrl}/addExpense`,{expense:e,description:d,category:c},{headers:{"Authorization":token}})
  .then(res=>{
     console.log(res.data);
-    let newex=res.data
+    let newex=res.data.expense
     setExpense(newex)
  })
 
