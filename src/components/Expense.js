@@ -33,7 +33,7 @@ const Expense=()=>{
    let content;
    const [premium,setPremium]=useState(false);
    const [showboard,setBoard]=useState(false);
-   const [boardlist,setList]=useState(null);
+   const [boardlist,setList]=useState([]);
    
 
 const ExpenseHandler=(event)=>{
@@ -73,7 +73,7 @@ useEffect(() => {
 
 
 if(allExpenses)
-{ console.log(allExpenses)
+{ 
   content=<ul>{allExpenses.map(item=>{return <li key={item.id}>{item.expense} {item.description} {item.category} <button className="btndel" onClick={expenseDeleteHandler.bind(null,item.id)}>DELETE</button></li>})}</ul> 
 }
 async function expenseDeleteHandler(id){
@@ -110,10 +110,13 @@ rzp1.on('payment.failed',async function(error){
 rzp1.open()
 setPremium(true);
 }
+let users;
 const leaderBoardHandler=()=>{
 
  axios.get(`${baseUrl}/leaderboard`).then(res=>{
-   console.log(res.data);
+   
+   setList(res.data.leaderboardusers)
+   
  })
 
 
@@ -144,7 +147,7 @@ return (
             {currentExpense && <li>{currentExpense.expense} paid for {currentExpense.description} - {currentExpense.category}</li>}
             </div>
             <div>{
-                   premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist}</div> 
+                   premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist.map((item)=><li key={item.name}>{item.name} ------ {item.totalcost}</li>)}</div> 
                  }  </div>
             
             
