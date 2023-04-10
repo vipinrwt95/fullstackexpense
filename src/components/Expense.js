@@ -115,7 +115,7 @@ const leaderBoardHandler=()=>{
 
  axios.get(`${baseUrl}/leaderboard`).then(res=>{
    
-   setList(res.data.leaderboardusers)
+   setList(res.data)
    
  })
 
@@ -147,7 +147,7 @@ return (
             {currentExpense && <li>{currentExpense.expense} paid for {currentExpense.description} - {currentExpense.category}</li>}
             </div>
             <div>{
-                   premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist.map((item)=><li key={item.name}>{item.name} ------ {item.totalcost}</li>)}</div> 
+                   premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist.map((item)=><li key={item.name}>{item.name} ------ {item.totalExpense}</li>)}</div> 
                  }  </div>
             
             
