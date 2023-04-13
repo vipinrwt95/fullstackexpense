@@ -43,9 +43,13 @@ const loginHandler=async (event)=>{
 const navHandler=()=>{
 props.page(props.item);
 }
+const forgotHandler=()=>{
+  props.page(3);
+}
 
 return(
     <>
+    
    <form  onSubmit={loginHandler} style={{display:'flex',alignContent:'center'}}>
      <input className="text" type="email" placeholder="Email" ref={email}  required/><br/>
      <input className="text"type="password" placeholder="Password" ref={password} required/><br/>
@@ -53,6 +57,7 @@ return(
      <nav style={{fontWeight:'25',color:'white'}} onClick={navHandler}>New User,take me to Signup</nav>
      
     </form>
+    <nav style={{fontWeight:'25',color:'white'}} onClick={forgotHandler}>Forgot Password?</nav>
     </>
 
 )

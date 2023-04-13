@@ -2,6 +2,7 @@ import React,{useState} from "react";
 
 import { Login } from "./login";
 import {Signup} from "./signup";
+import {Forgot} from "./Forgot";
 import dolla from './dolla.jpg';
 
 let Register=()=>{
@@ -21,6 +22,7 @@ return (<>
   <div  onClick={pagehandler.bind(null,2)}><h2 style={{color:'white'}}  >Already a user,</h2><button className="btn">Login</button></div></>}
 {page==1 && <><h1 className="brand">Expense Tracker</h1><Signup page={pagehandler} item={2} /></>}
 {page==2 && <><h1 className="brand">Expense Tracker</h1><Login page={pagehandler} item={1}/></>}
+{page==3 && <><h1 className="brand">Expense Tracker</h1><Forgot page={pagehandler} item={3}/></>}
 </div>
 
 </>)
