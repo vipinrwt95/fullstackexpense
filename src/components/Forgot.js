@@ -24,7 +24,7 @@ const emailHandler=async (event)=>{
     let details={
         email:email.current.value,
     }
-    axios.post(`${baseUrl}/password/reset`,details)
+    axios.post(`${baseUrl}/password/forgot`,details)
     }
 
 return(
