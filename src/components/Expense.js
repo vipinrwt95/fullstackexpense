@@ -121,6 +121,9 @@ const leaderBoardHandler=()=>{
 
 
 }
+const expenseReportHandler=()=>{
+   navigate('/user/expensereport');
+}
 return (
     <>
      {!premium && <div><button className="prembutton" onClick={premiumHandler} style={{backgroundColor:'yellow',borderRadius:'10px',color:'black'}}>Premium</button></div>}
@@ -146,13 +149,13 @@ return (
             <div><h1>Current Expense Added</h1>
             {currentExpense && <li>{currentExpense.expense} paid for {currentExpense.description} - {currentExpense.category}</li>}
             </div>
-            <div>{
+            <div style={{ color:'yellow',position:'relative',left:"100px",top:'10px'}}>{
                    premium &&   <div><button onClick={leaderBoardHandler}>Show LeaderBoard</button>{boardlist.map((item)=><li key={item.name}>{item.name} ------ {item.totalExpense}</li>)}</div> 
                  }  </div>
-            
-            
-        </div>
+              <button onClick={expenseReportHandler}>Expense report</button>   
    </div>
+   </div>
+   
    
    </>
 )

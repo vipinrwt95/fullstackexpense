@@ -27,18 +27,22 @@ const loginHandler=async (event)=>{
         email:email.current.value,
         password:password.current.value
     }
-    axios.post(`${baseUrl}/login`,details).then(res=>{
-      let token=res.data.token
-      let payload= parseJwt(token);
-      console.log("payload:- ", payload);
-      const data={idToken:token,isPremium:payload.isPremium};
-      dispatch(authActions.login(data))
-      localStorage.setItem('token',token);
-      navigate('/expense')
-      })
-    .catch(err=>{console.log(err.response.data.message)})
+    
+      axios.post(`${baseUrl}/login`,details).then(res=>{
+        let token=res.data.token
+        let payload= parseJwt(token);
+        console.log("payload:- ", payload);
+        const data={idToken:token,isPremium:payload.isPremium};
+        dispatch(authActions.login(data))
+        localStorage.setItem('token',token);
+        navigate('/expense')
+        })
+        .catch((err) => {
+          alert("Cheack Your Email And Password");
+          console.log(err.response.data.msg);
+        })
       
-    }
+      }
 
 const navHandler=()=>{
 props.page(props.item);
